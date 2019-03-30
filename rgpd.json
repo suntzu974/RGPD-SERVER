@@ -1,10 +1,10 @@
 {
     "database": {
-        "server": "10.1.10.10\\SAGEX3",
+        "server": "",
         "port" : 1433,
-        "user" : "sa",
-        "password": "$tiger2013!",
-        "database":"x3prod"
+        "user" : "",
+        "password": "",
+        "database":""
     },
     "port": 50000,
     "log" : "rgpd.log"
