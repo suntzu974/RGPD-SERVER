@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+  text-align: left;
+}
+</style>
+</head>
+<body>
+
+<h2>Liste des consentements </h2>
+
+<table style="width:100%">
+<tr>
+  <th>Entreprise</th>
+  <th>Siret</th>
+  <th>Adresse</th>
+  <th>Acceptation</th>
+  <th>Signature</th>
+</tr>
+  {{range .}}
+  <tr>
+  <td>
+    {{ if .CreatedCustomer}}
+      {{ .Customer.Name }}
+    {{ else }}
+      <p style="color:Tomato;"> CR&eacuteATION EN COURS </p>
+    {{ end }}
+  </td>
+    <td>{{ .Siret }}</td>
+    <td>
+      <address>
+        {{ .Customer.Street }}<br>
+        {{ .Customer.Address }}<br>
+        {{ .Customer.Postcod}},{{ .Customer.Town}}<br>
+      </address>
+    </td>
+    <td>
+        <ul>
+          <li>
+            Conditions g&eacuten&eacuterales d'utilsations
+              {{if .UsingGeneralConditions }} <b style="color:MediumSeaGreen;">Oui</b>
+              {{else}} <b style="color:Tomato;">Non</b>
+              {{end}}
+          </li>
+          <li>
+             Newsletters
+              {{if .Newsletters }} <b style="color:MediumSeaGreen;">Oui</b>
+              {{else}} <b style="color:Tomato;">Non</b>
+              {{end}}
+          </li>
+          <li>
+             Offres commerciales par E-mail
+              {{if .CommercialOffersByMail }} <b style="color:MediumSeaGreen;">Oui</b>
+              {{else}} <b style="color:Tomato;">Non</b>
+              {{end}}
+          </li>
+          <li>
+             Offres commerciales par SMS
+              {{if .CommercialOffersBySms }} <b style="color:MediumSeaGreen;">Oui</b>
+              {{else}} <b style="color:Tomato;">Non</b>
+              {{end}}
+          </li>
+          <li>
+             Offres commerciales par courier postal
+              {{if .CommercialOffersByPost }} <b style="color:MediumSeaGreen;">>Oui</b>
+              {{else}} <b style="color:Tomato;">Non</b>
+              {{end}}
+          </li>
+        </ul>
+    </td>
+    <td><img src="data:image/jpg;base64,{{.Signature}}" width=75 height=75></td>
+    {{else}}
+    <td><strong>no rows</strong></td>
+  </tr>
+  {{end}}
+</table>
+
+</body>
+</html>
