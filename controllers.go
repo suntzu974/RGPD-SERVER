@@ -519,11 +519,11 @@ func LoadConfiguration(file string) Configuration {
 	defer configFile.Close()
 	if err != nil {
 		log.Printf("%s", err.Error())
-		config.Database.Server = "10.1.10.10\\SAGEX3"
+		config.Database.Server = ""
 		config.Database.Port = 1433
-		config.Database.User = "sa"
-		config.Database.Password = "$tiger2013!"
-		config.Database.Database = "x3prod"
+		config.Database.User = ""
+		config.Database.Password = ""
+		config.Database.Database = ""
 		config.Port = 50001
 	}
 	jsonParser := json.NewDecoder(configFile)
